@@ -29,6 +29,22 @@ class ParticleFetch {
                 return response.json()
             })
     }
+
+    static logout(token) {
+        var params = new URLSearchParams();
+        params.append('access_token', token);
+
+        return fetch(AppConfig.particleApiUrl+"/v1/access_tokens/current", {
+            method: 'DELETE',
+            headers: {
+                "content-type": "application/x-www-form-urlencoded"
+            },
+            body: params.toString()
+        }).then(ParticleFetch.handleErrors)
+            .then((response) => {
+                return response.json()
+            })
+    }
 }
 
 export default ParticleFetch;

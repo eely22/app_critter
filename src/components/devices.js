@@ -71,6 +71,8 @@ export default class Devices extends Component {
                 this.setState({
                     devices: devices
                 })
+            }).catch((error) => {
+                TokenFetch.deleteToken();
             });
         });
     }

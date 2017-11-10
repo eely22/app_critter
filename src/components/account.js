@@ -21,7 +21,7 @@ class Login extends Component {
                     style={{height: 40, width: 250, borderColor: 'gray', borderWidth: 1, marginTop: 5}}
                     onChangeText={(text) => this.setState({username: text})}
                     value={this.state.username}
-                    placeholder="username"
+                    placeholder="email"
                     autoCapitalize="none"
                 />
 
@@ -47,7 +47,7 @@ class Login extends Component {
                 position: Toast.positions.BOTTOM
             });
             TokenFetch.saveToken(response['access_token']);
-            this.props.loggedIn();
+            this.props.loggedIn(response['access_token']);
         }).catch((error) => {
             console.log(error);
             Toast.show('Invalid username/password', {
@@ -68,6 +68,7 @@ class Logout extends Component {
         )
     }
     logout = () => {
+        ParticleFetch.logout(this.props.token).catch((error) => {console.log(error)});
         TokenFetch.deleteToken();
         this.props.loggedOut();
     }
@@ -78,7 +79,8 @@ export default class Account extends Component {
         super(props);
 
         this.state = {
-            loggedIn: false
+            loggedIn: false,
+            token: null
         }
     }
 
@@ -87,7 +89,7 @@ export default class Account extends Component {
         return (
             <View>
                 {!this.state.loggedIn && <Login loggedIn={this.loggedIn}/>}
-                {this.state.loggedIn && <Logout loggedOut={this.loggedOut}/>}
+                {this.state.loggedIn && <Logout token={this.state.token} loggedOut={this.loggedOut}/>}
             </View>
         );
     }
@@ -96,16 +98,17 @@ export default class Account extends Component {
         var token = TokenFetch.getToken().then( (t) => {
             console.log("Token in promise: " + t);
             this.setState({
-                loggedIn: t !== null && t !== undefined
+                loggedIn: t !== null && t !== undefined,
+                token: token
             });
         });
     }
 
-    loggedIn = () => {
-        this.setState({loggedIn: true})
+    loggedIn = (token) => {
+        this.setState({loggedIn: true, token: token})
     }
 
     loggedOut = () => {
-        this.setState({loggedIn: false})
+        this.setState({loggedIn: false, token: null})
     }
 }

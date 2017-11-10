@@ -51,7 +51,7 @@ export default class Events extends Component {
                 devices.forEach((device) => {
                     CritterFetch.getEvents(device.device_id).then( (events) => {
                         let sorted = this.state.events.concat(events['events']).sort(function (a, b) {
-                            return Date.parse(a) - Date.parse(b);
+                            return Date.parse(b['event_timestamp']) - Date.parse(a['event_timestamp']);
                         });
                         console.log(sorted)
                         this.setState({events: sorted})
