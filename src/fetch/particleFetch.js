@@ -1,4 +1,5 @@
 import AppConfig from '../appConfig'
+import 'url-search-params-polyfill';
 
 class ParticleFetch {
     static handleErrors(response) {
@@ -10,7 +11,7 @@ class ParticleFetch {
     }
 
     static login(username, password) {
-        var params = new URLSearchParams();
+        var params = new URLSearchParams ();
         params.append('username', username);
         params.append('password', password);
         params.append('grant_type', 'password');

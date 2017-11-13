@@ -55,7 +55,7 @@ export default class Devices extends Component {
             <View>
                 <Text>Devices</Text>
                 {this.state.devices.map((device) =>
-                    <View key={device.id}>
+                    <View key={device.device_id}>
                         <Device
                             device={device}
                         />

@@ -12,7 +12,8 @@
 		"react-native": "0.50.3",
 		"react-native-material-ui": "^1.14.0",
 		"react-native-root-toast": "^2.2.0",
-		"react-native-vector-icons": "^4.4.2"
+		"react-native-vector-icons": "^4.4.2",
+		"url-search-params-polyfill": "^2.0.1"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",

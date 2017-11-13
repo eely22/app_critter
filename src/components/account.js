@@ -79,13 +79,12 @@ export default class Account extends Component {
         super(props);
 
         this.state = {
-            loggedIn: false,
+            loggedIn: true,
             token: null
         }
     }
 
     render() {
-        console.log("Rendering with " + this.state.loggedIn);
         return (
             <View>
                 {!this.state.loggedIn && <Login loggedIn={this.loggedIn}/>}
@@ -96,7 +95,6 @@ export default class Account extends Component {
 
     componentDidMount = () => {
         var token = TokenFetch.getToken().then( (t) => {
-            console.log("Token in promise: " + t);
             this.setState({
                 loggedIn: t !== null && t !== undefined,
                 token: token
