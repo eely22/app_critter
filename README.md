@@ -31,3 +31,7 @@ react-native run-ios
 ```
 
 This will start an iOS simulator, install and start the app. You can then modify the React code and hit Command+R to refresh the code in the app.
+
+## Usage
+
+The app requires login to a valid Particle account. Go to the Account tab and enter your credentials there. The list of devices that id visible in the Devices tab are valid Particle devices that are named critter_X, where X can be anything further. So testing with the app requires real devices, with a real Particle account. 
