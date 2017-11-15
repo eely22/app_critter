@@ -1,5 +1,5 @@
 
-[https://github.com/eely22/app_critter/blob/master/app_collage.png]
+![Alt text](https://github.com/eely22/app_critter/blob/master/app_collage.png?raw=true "Title")
 
 
 Critter App
